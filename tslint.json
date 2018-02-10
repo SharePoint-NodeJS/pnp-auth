@@ -14,6 +14,7 @@
     ],
     "no-inferrable-types":true,
     "strict-type-predicates": false,
+    "await-promise": false,
     "indent": [
       true,
       "spaces",

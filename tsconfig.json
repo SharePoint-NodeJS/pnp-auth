@@ -1,12 +1,18 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es6",
     "module": "commonjs",
     "sourceMap": true,
     "declaration": true,
     "moduleResolution": "node",
     "noImplicitAny": true,
     "removeComments": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": true,
+    "noStrictGenericChecks": true,
+    "skipLibCheck": true,
     "outDir": "./lib"
   },
   "include": [

@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "tslint-config-standard"
+  ],
+  "rules": {
+    "semicolon": [
+      true
+    ],
+    "space-before-function-paren": [
+      false
+    ],
+    "ter-indent": [
+      false
+    ],
+    "no-inferrable-types":true,
+    "strict-type-predicates": false,
+    "indent": [
+      true,
+      "spaces",
+      2
+    ]
+  }
+}

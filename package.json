@@ -1,12 +1,12 @@
 {
-  "name": "pnpjs",
-  "version": "0.0.1",
-  "description": "",
+  "name": "pnp-auth",
+  "version": "0.0.2",
+  "description": "Provides additional authentication options for @pnp/pnp (aka PnPjs) library",
   "main": "lib/index.js",
   "typings": "lib/index",
   "scripts": {
     "build": "npm run tslint && tsc -p .",
-    "prepublish": "rimraf -- lib && npm run build",
+    "prepare" : "rimraf -- lib && npm run build",
     "tslint": "tslint --project tsconfig.json",
     "precommit": "npm run tslint",
     "test": "mocha ./test/integration.spec.ts",
@@ -14,14 +14,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SharePoint-NodeJS/pnpjs.git"
+    "url": "git+https://github.com/SharePoint-NodeJS/pnp-auth.git"
   },
   "author": "",
-  "license": "ISC",
+  "contributors": [
+    "Sergei Sergeev <sergeev.srg@gmail.com>",
+    "Andrew Koltyakov <andrew.koltyakov@gmail.com>"
+  ],
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SharePoint-NodeJS/pnpjs/issues"
+    "url": "https://github.com/SharePoint-NodeJS/pnp-auth/issues"
   },
-  "homepage": "https://github.com/SharePoint-NodeJS/pnpjs",
+  "homepage": "https://github.com/SharePoint-NodeJS/pnp-auth",
   "nyc": {
     "include": [
       "src/**/*.ts"

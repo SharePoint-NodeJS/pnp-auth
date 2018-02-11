@@ -24,6 +24,10 @@ export default class NodeFetchClient implements HttpClientImpl {
             url = Util.combinePaths(this.siteUrl, url);
         }
 
+        if (!Util.isUrlAbsolute(url)) {
+            throw new Error('You should provide siteUrl parameter for bootstrap method or via credentials parameter');
+        }
+
         let authData = await getAuth(url, this.authSettings);
 
         /* attach headers and options received from node-sp-auth */

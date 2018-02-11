@@ -74,4 +74,23 @@ describe('pnp-auth integration testing', () => {
 
         expect(web.Title).not.to.equal(webTitle);
     });
+
+    it('should throw an error when no siteUrl supplied', async function () {
+        this.timeout(60 * 1000);
+
+        let authConfig = new AuthConfig({
+            configPath: './config/private.json',
+            encryptPassword: true,
+            saveConfigOnDisk: true
+        });
+        let ctx = await authConfig.getContext();
+
+        bootstrap(sp, ctx.authOptions);
+
+        try {
+            let web = await sp.web.get();
+        } catch (e) {
+            expect(e.message).to.contain('You should provide siteUrl');
+        }
+    });
 });

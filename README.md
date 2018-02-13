@@ -52,15 +52,13 @@ sp.web.get().then(...);
 - `sp` - "sp" object obtained from `@pnp/sp` library via import: `import { sp } from '@pnp/sp';`
 - `authData` - can be a `string`, `AuthConfig` object or raw `node-sp-auth` credentials:
   - `string` - absolute or relative path to your file with authentication data. File should be generated using [`node-sp-auth-config`](https://github.com/koltyakov/node-sp-auth-config) CLI. When string is provided, `pnp-auth` internally creates `AuthConfig` with below default parameters:
-
-```TypeScript
-let authConfig = new AuthConfig({
-  configPath: <your path to file>,
-  encryptPassword: true,
-  saveConfigOnDisk: true
-});
-```
-
+  ```TypeScript
+  let authConfig = new AuthConfig({
+    configPath: <your path to file>,
+    encryptPassword: true,
+    saveConfigOnDisk: true
+  });
+  ```
   - `AuthConfig` - you can provide [`AuthConfig`](https://github.com/koltyakov/node-sp-auth-config#usage-in-typescript) directly. To learn more checkout [`node-sp-auth-config`](https://github.com/koltyakov/node-sp-auth-config) repository
   - raw credentials - you can pass any credential options which are supported by `node-sp-auth`. For more information checkout [`node-sp-auth`](https://github.com/s-KaiNet/node-sp-auth) repository as well as [wiki](https://github.com/s-KaiNet/node-sp-auth/wiki)
 - `siteUrl` - your SharePoint site url. You have two options when working with SharePoint data. When using `siteUrl` parameter, you can write a code `sp.web.get()` etc., in that case your `sp.web` object will be attached to your `siteUrl`. If you want to work with different webs, you can use Web constructor: `new Web(<url to SharePoint>)`

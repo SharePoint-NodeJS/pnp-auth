@@ -1,6 +1,6 @@
 {
   "name": "pnp-auth",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Provides additional authentication options for @pnp/pnp (aka PnPjs) library",
   "main": "lib/index.js",
   "typings": "lib/index",

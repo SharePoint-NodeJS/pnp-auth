@@ -1,4 +1,4 @@
-## `pnp-auth` adds additional authentication options for PnPjs library (pnp/pnp) via implementing custom NodeFetchClient
+## `pnp-auth` adds additional authentication options for PnPjs library (pnp/pnpjs) via implementing custom NodeFetchClient
 
 [![NPM](https://nodei.co/npm/pnp-auth.png?mini=true&downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/pnp-auth/)
 

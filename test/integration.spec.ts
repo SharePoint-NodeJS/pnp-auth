@@ -88,8 +88,7 @@ describe('pnp-auth integration testing', () => {
         bootstrap(sp, ctx.authOptions);
 
         try {
-            // @ts-ignore
-            let web = await sp.web.get();
+            await sp.web.get();
         } catch (e) {
             expect(e.message).to.contain('You should provide siteUrl');
         }

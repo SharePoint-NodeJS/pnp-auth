@@ -1,4 +1,4 @@
-## `pnp-auth` adds additional authentication options for PnPjs library (pnp/pnpjs) via implementing custom NodeFetchClient
+## `pnp-auth` adds additional authentication options for [PnPjs](https://github.com/pnp/pnpjs) library via implementing custom NodeFetchClient
 
 [![NPM](https://nodei.co/npm/pnp-auth.png?mini=true&downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/pnp-auth/)
 
@@ -10,7 +10,7 @@
 
 Supported versions:
 
-- SharePoint 2013, 2016
+- SharePoint 2013, 2016, 2019
 - SharePoint Online
 
 For full list of authentication options check out [`node-sp-auth`](https://github.com/s-KaiNet/node-sp-auth) readme.
@@ -19,17 +19,16 @@ For full list of authentication options check out [`node-sp-auth`](https://githu
 
 ### Install
 
-```bash
-npm install pnp-auth --save
-```
-
-Install `@pnp/sp` libraries as well:
+Install `@pnp/sp` libraries (they are listed as peer dependencies for `pnp-auth`, that's why you **should** install them separately).
+We need more than just `@pnp/sp` because it depends on some other `@pnp/` packages:
 
 ```bash
 npm install @pnp/logging @pnp/common @pnp/odata @pnp/sp --save
 ```
-
-We need more than just `@pnp/sp` because it depends on some other `@pnp/` packages.
+Install `pnp-auth`:
+```bash
+npm install pnp-auth --save
+```
 
 ### Bootstrap
 
@@ -43,6 +42,17 @@ bootstrap(sp, authData, siteUrl);
 // That's it! Now you can use pnp-sp library:
 
 sp.web.get().then(...);
+```
+OR with object's constructors:
+```TypeScript
+import { bootstrap } from 'pnp-auth';
+import { sp, Web } from '@pnp/sp';
+
+bootstrap(sp, authData); 
+// That's it! Now you can use pnp-sp library:
+
+let web = new Web(siteUrl);
+web.get().then(...)
 ```
 
 ### API:

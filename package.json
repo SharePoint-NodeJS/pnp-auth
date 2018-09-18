@@ -43,6 +43,12 @@
     "sourceMap": true,
     "instrument": true
   },
+  "peerDependencies": {
+    "@pnp/common": "1.x",
+    "@pnp/logging": "1.x",
+    "@pnp/odata": "1.x",
+    "@pnp/sp": "1.x"
+  },
   "devDependencies": {
     "@types/chai": "^4.1.4",
     "@types/mocha": "^5.2.5",
@@ -59,10 +65,6 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
-    "@pnp/common": "^1.2.1",
-    "@pnp/logging": "^1.2.1",
-    "@pnp/odata": "^1.2.1",
-    "@pnp/sp": "^1.2.1",
     "node-fetch": "^2.2.0",
     "node-sp-auth": "^2.5.5",
     "node-sp-auth-config": "^2.5.6"

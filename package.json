@@ -1,12 +1,12 @@
 {
   "name": "pnp-auth",
-  "version": "0.0.3",
-  "description": "Provides additional authentication options for @pnp/pnp (aka PnPjs) library",
+  "version": "0.0.4",
+  "description": "Provides additional authentication options for @pnp/pnpjs (aka PnPjs) library",
   "main": "lib/index.js",
   "typings": "lib/index",
   "scripts": {
     "build": "npm run tslint && tsc -p .",
-    "prepare" : "rimraf -- lib && npm run build",
+    "prepare": "rimraf -- lib && npm run build",
     "tslint": "tslint --project tsconfig.json",
     "precommit": "npm run tslint",
     "test": "mocha ./test/integration.spec.ts",
@@ -44,27 +44,27 @@
     "instrument": true
   },
   "devDependencies": {
-    "@types/chai": "^4.1.2",
-    "@types/mocha": "^2.2.48",
-    "@types/node-fetch": "^1.6.7",
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.5",
+    "@types/node-fetch": "^2.1.2",
     "chai": "^4.1.2",
     "husky": "^0.14.3",
-    "mocha": "^5.0.0",
-    "nyc": "^11.4.1",
+    "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
     "rimraf": "^2.6.2",
-    "source-map-support": "^0.5.3",
-    "ts-node": "^4.1.0",
-    "tslint": "^5.9.1",
-    "tslint-config-standard": "^7.0.0",
-    "typescript": "^2.5.3"
+    "source-map-support": "^0.5.9",
+    "ts-node": "^7.0.1",
+    "tslint": "^5.11.0",
+    "tslint-config-standard": "^8.0.1",
+    "typescript": "^3.0.3"
   },
   "dependencies": {
-    "@pnp/common": "^1.0.1",
-    "@pnp/logging": "^1.0.1",
-    "@pnp/odata": "^1.0.1",
-    "@pnp/sp": "^1.0.1",
-    "node-fetch": "^2.0.0",
-    "node-sp-auth": "^2.3.3",
-    "node-sp-auth-config": "^2.4.3"
+    "@pnp/common": "^1.2.1",
+    "@pnp/logging": "^1.2.1",
+    "@pnp/odata": "^1.2.1",
+    "@pnp/sp": "^1.2.1",
+    "node-fetch": "^2.2.0",
+    "node-sp-auth": "^2.5.5",
+    "node-sp-auth-config": "^2.5.6"
   }
 }

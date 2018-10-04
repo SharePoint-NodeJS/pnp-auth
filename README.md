@@ -6,6 +6,8 @@
 [![Downloads](https://img.shields.io/npm/dm/pnp-auth.svg)](https://www.npmjs.com/package/pnp-auth)
 [![Gitter chat](https://badges.gitter.im/gitterHQ/gitter.png)](https://gitter.im/sharepoint-node/Lobby)
 
+**!Important:** as library implements `NodeFetchClient` and depends on `node-sp-auth` module, you can use `pnp-auth` **only in nodejs** environment
+
 `pnp-auth` uses [`node-sp-auth`](https://github.com/s-KaiNet/node-sp-auth) as authentication library, thus making all authentication options from `node-sp-auth` available for `pnp-auth`.
 
 Supported versions:

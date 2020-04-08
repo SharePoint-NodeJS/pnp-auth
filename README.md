@@ -21,13 +21,29 @@ For full list of authentication options check out [`node-sp-auth`](https://githu
 
 ### Install
 
+#### PnPjs v1
+
 Install `@pnp/sp` libraries (they are listed as peer dependencies for `pnp-auth`, that's why you **should** install them separately).
 We need more than just `@pnp/sp` because it depends on some other `@pnp/` packages:
 
 ```bash
 npm install @pnp/logging @pnp/common @pnp/odata @pnp/sp --save
 ```
-Install `pnp-auth`:
+
+#### PnPjs v2
+
+With PnPjs some dramatic changes has come. Different set of packages should be installed.
+
+In PnPjs, `@pnp/*-commonjs` packages are compatible with Node.js by default. Standard `@pnp/*` require webpack comfiguration for ES6 modules.
+
+```bash
+npm i @pnp/common@^1.3.10 @pnp/sp-commonjs
+```
+
+We will improve support of v2 in the next release. Now, please check [this workaround](https://github.com/SharePoint-NodeJS/pnp-auth/issues/7#issuecomment-607794385).
+
+#### Install `pnp-auth`
+
 ```bash
 npm install pnp-auth --save
 ```
@@ -45,7 +61,9 @@ bootstrap(sp, authData, siteUrl);
 
 sp.web.get().then(...);
 ```
+
 OR with object's constructors:
+
 ```TypeScript
 import { bootstrap } from 'pnp-auth';
 import { sp, Web } from '@pnp/sp';

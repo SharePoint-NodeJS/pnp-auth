@@ -1,7 +1,7 @@
 import NodeFetchClient from './NodeFetchClient';
 import { IAuthOptions } from 'node-sp-auth';
 import { AuthConfig } from 'node-sp-auth-config';
-import { SPRest } from '@pnp/sp';
+import { SPRest } from '@pnp/sp-commonjs';
 
 export * from './NodeFetchClient';
 

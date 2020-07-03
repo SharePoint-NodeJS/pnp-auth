@@ -1,9 +1,10 @@
 import { bootstrap } from '../src/index';
-import { sp, Web } from '@pnp/sp';
+import { sp } from '@pnp/sp-commonjs';
+import { Web } from '@pnp/sp-commonjs/webs';
 import { expect } from 'chai';
 import { AuthConfig } from 'node-sp-auth-config';
 
-import { subSiteUrl, webTitle } from './settings';
+import { subSiteUrl, webTitle } from './settings.sample';
 
 describe('pnp-auth integration testing', () => {
 
@@ -59,7 +60,7 @@ describe('pnp-auth integration testing', () => {
 
         bootstrap(sp, ctx.authOptions);
 
-        let web = new Web(ctx.siteUrl);
+        let web = Web(ctx.siteUrl);
 
         let webInfo = await web.get();
         expect(webInfo.Title).to.equal(webTitle);

@@ -44,10 +44,10 @@
     "instrument": true
   },
   "peerDependencies": {
-    "@pnp/common": "1.x",
-    "@pnp/logging": "1.x",
-    "@pnp/odata": "1.x",
-    "@pnp/sp": "1.x"
+    "@pnp/common-commonjs": "2.x",
+    "@pnp/logging-commonjs": "2.x",
+    "@pnp/odata-commonjs": "2.x",
+    "@pnp/sp-commonjs": "2.x"
   },
   "devDependencies": {
     "@types/chai": "^4.1.4",
@@ -65,8 +65,8 @@
     "typescript": "^3.0.3"
   },
   "dependencies": {
-    "node-fetch": "^2.2.0",
-    "node-sp-auth": "^2.5.5",
-    "node-sp-auth-config": "^2.5.6"
+    "node-fetch": "^2.6.0",
+    "node-sp-auth": "^2.5.9",
+    "node-sp-auth-config": "^2.9.4"
   }
 }

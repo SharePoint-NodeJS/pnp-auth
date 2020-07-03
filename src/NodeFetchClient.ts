@@ -1,9 +1,9 @@
-import { HttpClientImpl, FetchOptions, extend, isUrlAbsolute, combine } from '@pnp/common';
+import { IHttpClientImpl, IFetchOptions, assign, isUrlAbsolute, combine } from '@pnp/common-commonjs';
 import { IAuthOptions, getAuth } from 'node-sp-auth';
 import fetch, { Headers, Request, Response } from 'node-fetch';
 import { AuthConfig } from 'node-sp-auth-config';
 import { parse as urlParse } from 'url';
-import * as https from 'https';
+import { Agent } from 'https';
 
 declare let global: any;
 
@@ -11,13 +11,13 @@ global.Headers = Headers;
 global.Request = Request;
 global.Response = Response;
 
-export default class NodeFetchClient implements HttpClientImpl {
+export default class NodeFetchClient implements IHttpClientImpl {
 
   private authSettings: IAuthOptions = null;
 
   constructor(private authData: IAuthOptions | AuthConfig | string, private siteUrl?: string) { }
 
-  public async fetch(url: string, options: FetchOptions): Promise<any> {
+  public async fetch(url: string, options: IFetchOptions): Promise<any> {
     await this.initAuthOptions();
 
     if (!isUrlAbsolute(url)) {
@@ -43,17 +43,17 @@ export default class NodeFetchClient implements HttpClientImpl {
       headers.set('accept', 'application/json;odata=verbose');
     }
 
-    extend(options, {
+    assign(options, {
       headers: headers
     });
 
-    extend(options, authData.options);
+    assign(options, authData.options);
 
     const isHttps: boolean = urlParse(url).protocol === 'https:';
 
     if (isHttps && !(options as any).agent) {
       /* bypassing ssl certificate errors (self signed, etc) for on-premise */
-      (options as any).agent = new https.Agent({ rejectUnauthorized: false });
+      (options as any).agent = new Agent({ rejectUnauthorized: false });
     }
 
     /* perform actual request with node-fetch */

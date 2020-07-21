@@ -12,7 +12,7 @@
 
 Supported versions:
 
-- SharePoint 2013, 2016, 2019
+- SharePoint 2013 and onwards
 - SharePoint Online
 
 For full list of authentication options check out [`node-sp-auth`](https://github.com/s-KaiNet/node-sp-auth) readme.
@@ -21,7 +21,12 @@ For full list of authentication options check out [`node-sp-auth`](https://githu
 
 ### Install
 
-#### PnPjs v1
+#### Note on PnPjs v1 usage
+If you need support for the previous version of PnPjs, simply install the version of pnp-auth, which supports PnPjs v1: 
+
+```bash
+npm install pnp-auth@0.x
+```
 
 Install `@pnp/sp` libraries (they are listed as peer dependencies for `pnp-auth`, that's why you **should** install them separately).
 We need more than just `@pnp/sp` because it depends on some other `@pnp/` packages:
@@ -29,18 +34,6 @@ We need more than just `@pnp/sp` because it depends on some other `@pnp/` packag
 ```bash
 npm install @pnp/logging @pnp/common @pnp/odata @pnp/sp --save
 ```
-
-#### PnPjs v2
-
-With PnPjs some dramatic changes has come. Different set of packages should be installed.
-
-In PnPjs, `@pnp/*-commonjs` packages are compatible with Node.js by default. Standard `@pnp/*` require webpack comfiguration for ES6 modules.
-
-```bash
-npm i @pnp/common@^1.3.10 @pnp/sp-commonjs
-```
-
-We will improve support of v2 in the next release. Now, please check [this workaround](https://github.com/SharePoint-NodeJS/pnp-auth/issues/7#issuecomment-607794385).
 
 #### Install `pnp-auth`
 
@@ -54,24 +47,24 @@ Before using PnPjs library, you should make it aware of your authentication data
 
 ```TypeScript
 import { bootstrap } from 'pnp-auth';
-import { sp } from '@pnp/sp';
+import { sp } from '@pnp/sp-commonjs';
 
-bootstrap(sp, authData, siteUrl); 
+bootstrap(sp, authData, siteUrl);
 // That's it! Now you can use pnp-sp library:
 
 sp.web.get().then(...);
 ```
 
-OR with object's constructors:
+OR with factory methods:
 
 ```TypeScript
 import { bootstrap } from 'pnp-auth';
-import { sp, Web } from '@pnp/sp';
+import { sp, Web } from '@pnp/sp-commonjs';
 
 bootstrap(sp, authData); 
 // That's it! Now you can use pnp-sp library:
 
-let web = new Web(siteUrl);
+let web = Web(siteUrl);
 web.get().then(...)
 ```
 
@@ -79,7 +72,7 @@ web.get().then(...)
 
 #### bootstrap(sp, authData, siteUrl)
 
-- `sp` - "sp" object obtained from `@pnp/sp` library via import: `import { sp } from '@pnp/sp';`
+- `sp` - "sp" object obtained from `@pnp/sp-commonjs` library via import: `import { sp } from '@pnp/sp-commonjs';`
 - `authData` - can be a `string`, `AuthConfig` object or raw `node-sp-auth` credentials:
   - `string` - absolute or relative path to your file with authentication data. File should be generated using [`node-sp-auth-config`](https://github.com/koltyakov/node-sp-auth-config) CLI. When string is provided, `pnp-auth` internally creates `AuthConfig` with below default parameters:
   ```TypeScript
@@ -91,15 +84,15 @@ web.get().then(...)
   ```
   - `AuthConfig` - you can provide [`AuthConfig`](https://github.com/koltyakov/node-sp-auth-config#usage-in-typescript) directly. To learn more checkout [`node-sp-auth-config`](https://github.com/koltyakov/node-sp-auth-config) repository
   - raw credentials - you can pass any credential options which are supported by `node-sp-auth`. For more information checkout [`node-sp-auth`](https://github.com/s-KaiNet/node-sp-auth) repository as well as [wiki](https://github.com/s-KaiNet/node-sp-auth/wiki)
-- `siteUrl` - your SharePoint site url. You have two options when working with SharePoint data. When using `siteUrl` parameter, you can write a code `sp.web.get()` etc., in that case your `sp.web` object will be attached to your `siteUrl`. If you want to work with different webs, you can use Web constructor: `new Web(<url to SharePoint>)`
+- `siteUrl` - your SharePoint site url. You have two options when working with SharePoint data. When using `siteUrl` parameter, you can write a code `sp.web.get()` etc., in that case your `sp.web` object will be attached to your `siteUrl`. If you want to work with different webs, you can use factory method: `Web(<url to SharePoint>)`
 
 ### Manual bootstrap
- 
+
 Of course, you can do bootstrap manually, if you want. `pnp-auth` exports `NodeFetchClient` which you can use in pnp's `setup` method:
 
 ```TypeScript
 import NodeFetchClient from 'pnp-auth';
-import { sp } from '@pnp/sp';
+import { sp } from '@pnp/sp-commonjs';
 
 sp.setup({
   sp: {

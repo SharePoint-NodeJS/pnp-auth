@@ -6,7 +6,7 @@
   "typings": "lib/index",
   "scripts": {
     "build": "npm run lint && tsc -p .",
-    "prepare": "rimraf -- lib && npm run build",
+    "prepublishOnly": "rimraf -- lib && npm run build",
     "lint": "eslint -c .eslintrc.json --ext .ts src test",
     "precommit": "npm run lint",
     "test": "mocha ./test/integration.spec.ts",

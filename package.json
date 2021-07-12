@@ -74,7 +74,7 @@
   },
   "dependencies": {
     "node-fetch": "^2.6.0",
-    "node-sp-auth": "^3.0.1",
+    "node-sp-auth": "^3.0.4",
     "node-sp-auth-config": "^3.0.1"
   }
 }

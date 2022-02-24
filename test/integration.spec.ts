@@ -31,6 +31,37 @@ describe('pnp-auth integration testing', () => {
         expect(web.Title).to.equal(webTitle);
     });
 
+    it('should bootstrap PnPjs\'s isolated site', async function () {
+        this.timeout(60 * 1000);
+
+        const authConfig = new AuthConfig({
+            configPath: './config/private.json',
+            encryptPassword: true,
+            saveConfigOnDisk: true
+        });
+
+        // const authConfig2 = new AuthConfig({
+        //     configPath: './config/private2.json',
+        //     encryptPassword: true,
+        //     saveConfigOnDisk: true
+        // });
+
+        const ctx = await authConfig.getContext();
+        // const ctx2 = await authConfig2.getContext();
+
+        const isolatedSP = await sp.createIsolated({ baseUrl: ctx.siteUrl });
+        // const isolatedSP2 = await sp.createIsolated({ baseUrl: ctx2.siteUrl });
+
+        bootstrap(isolatedSP, authConfig);
+        // bootstrap(isolatedSP2, authConfig2);
+
+        const web = await isolatedSP.web.get();
+        // const web2 = await isolatedSP2.web.get();
+
+        expect(web.Title).to.equal(webTitle);
+        // expect(web.Title).not.to.equal(web2.Title);
+    });
+
     it('should use real creds (IAuthOptions) and use site url from file', async function () {
         this.timeout(60 * 1000);
 
@@ -93,4 +124,5 @@ describe('pnp-auth integration testing', () => {
             expect(e.message).to.contain('You should provide siteUrl');
         }
     });
+
 });

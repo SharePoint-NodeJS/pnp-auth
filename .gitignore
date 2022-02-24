@@ -1,6 +1,6 @@
 node_modules
 lib
-config/private.json
+config/private*.json
 test/settings.ts
 coverage
 .nyc_output
